@@ -7,16 +7,13 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
 	<title>网络</title>
-
 </head>
-
-<h2>原神账号注册</h2>
+<h2>账号注册</h2>
 <div>
 <form action="" method="post">
 <input  type="text" id="username" name="username"  value="" placeholder="请输入登陆账号" maxlength="30"><br><br>
 <button type="submit" name="register" id="register" >点击注册
-</button></font><br>
-            </a></form>
+</button></font><br></a></form>
 <?php
 if(isset($_POST["register"])){
     $user=$_POST["username"];
