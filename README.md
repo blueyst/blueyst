@@ -1,10 +1,5 @@
-### Hi there blueyst
-
-<!--
-**blueyst/blueyst** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-awa
-hello
-i am a salt flsh
+这是一个README文件(没啥屁用)
+这是一个我自己写的非常烂的网站
+是用于实验的网站
+php对接mongodb
+总之是php原生写的很烂
