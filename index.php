@@ -33,21 +33,18 @@ if(isset($_POST["register"])){
     foreach($cursor as $doc) {
         $Account=$doc->count;
     }
-	    if($user == ""){
-		    echo "<font size='4' color= '#00BFFF'><br>用户名和UID不能为空!<br>";
-	    }elseif($UID==""){
-	        
-	        $bulk = new MongoDB\Driver\BulkWrite;
+	if($user == ""){
+		echo "<font size='4' color= '#00BFFF'><br>用户名和UID不能为空!<br>";
+	}elseif($UID==""){
+		$bulk = new MongoDB\Driver\BulkWrite;
 	        $bulk->update(['_id'=>'Account'],['count'=>intval($Account)+1]);
-	        $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
-	        $manager->executeBulkWrite('grasscutter.counters', $bulk,$writeConcern); 
-	        
-			$bulk = new MongoDB\Driver\BulkWrite;
-			$bulk->insert(['_id'=>(string)(intval($Account)+1),'username'=>$user,'reservedPlayerId'=>intval('0'),'permissions'=>['0'=>''],'locale'=>'zh_CN']);
-			$manager->executeBulkWrite('grasscutter.accounts', $bulk); 
-		    echo "<font size='4' color= '#00BFFF'><br>账号注册成功!<br>";
-		    echo "<font size='4' color= '#00BFFF'><br>注册的账号名为:".$user."<br>";
-		    echo "<font size='4' color= '#00BFFF'><br>注册的UID为:".(string)(intval($Account)+1)."<br>";
+	        $manager->executeBulkWrite('grasscutter.counters', $bulk); 
+		$bulk = new MongoDB\Driver\BulkWrite;
+		$bulk->insert(['_id'=>(string)(intval($Account)+1),'username'=>$user,'reservedPlayerId'=>intval('0'),'permissions'=>['0'=>''],'locale'=>'zh_CN']);
+		$manager->executeBulkWrite('grasscutter.accounts', $bulk); 
+		echo "<font size='4' color= '#00BFFF'><br>账号注册成功!<br>";
+		echo "<font size='4' color= '#00BFFF'><br>注册的账号名为:".$user."<br>";
+		echo "<font size='4' color= '#00BFFF'><br>注册的UID为:".(string)(intval($Account)+1)."<br>";
 	    }else{
 	        echo("<font size='4' color= '#00BFFF'><br>用户已经存在!");
         }
